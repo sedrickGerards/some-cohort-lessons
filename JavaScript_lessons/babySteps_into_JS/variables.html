@@ -5,10 +5,28 @@
    <title>Variables</title>
 </head>
 <body>
-    <script>
 
-        let variable1 = 3;
-        console.log(variable1)
+    
+    <script>
+        let name = 'Gentle-sed'
+        let hour = 15;
+        if (hour >= 6 && hour < 12){
+            console.log(`Good Morning ${name}`)
+        } else if (hour >= 12 && hour < 17) {
+            console.log(`Good Afternoon ${name}`)
+        } else {
+            console.log(`Good Night ${name}`)
+        }
+
+        const isHoliday = true;
+        let age = 98; 
+        if ((age <= 6 || age >= 65) && isHoliday){
+            console.log('Discount')
+        } else {
+            console.log('No Discount')
+        }
+
+       
     </script>
 </body>
 </html>
