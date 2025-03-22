@@ -4,11 +4,67 @@
     <title>Functions</title>
 </head>
 <body>
-    
+   
     
 
 
     <script>
+
+        function convertTemperature(degree, unit){
+            if (unit === 'C'){
+                convertToFahrenheit(degree)
+            } else {
+                convertToCelsius(degree)
+            }
+
+        }
+
+        function convertToFahrenheit(degree){
+         Fahrenheit = (degree*9/5) + 32
+         console.log(Fahrenheit)
+        }
+
+         function convertToCelsius(degree){
+
+            Celsius = (degree -32)* 5/9
+            console.log(Celsius)
+
+         }
+
+        
+        function greet(name){
+            // console.log('Hello', name)
+            // name == undefined ? console.log('Hi there') : console.log('Hello', name)
+            //  name == '' ? console.log('Hi there') : console.log('Hello', name)
+            !name ? console.log('Hi there') : console.log('Hello', name)
+            
+        }
+
+        // CONVERTING LENGTHS 
+
+        // function convertLength(length, from, to) {
+
+        //     from === 'km' ?  console.log((length / 1.6) + ' km') :   console.log((length * 1.6)+ ' miles')
+        // }
+
+        function convertLength(length, from, to) {
+            if (from === 'km' && to === 'miles') {
+                Length = length / 1.6
+                console.log(Length + " miles")
+            } else if( from === 'miles' && to === 'km') {
+                Length = length * 1.6;
+                 console.log(Length + " km")
+            } else{
+                console.log(length + ' ' +  to )
+            }
+        }
+        
+        // convertToFahrenheit(25)
+        // greet('sed')
+        // greet()
+        // convertToCelsius(86)
+        // convertTemperature(86, 'C')
+        convertLength(50, 'miles','km')
 
     </script>
 </body>
