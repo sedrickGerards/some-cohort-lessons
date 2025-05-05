@@ -8,11 +8,11 @@ func main() {
 
 	var conferenceName = "Go Conference"
 	const conferenceTickets = 50
-	var remainingTickets = conferenceTickets - 1
+	 remainingTickets := conferenceTickets
 
 	fmt.Println("Welcome to the", conferenceName, "booking app")
 	fmt.Println("Get your ticket here to attend")
-	fmt.Println("we have a total of", conferenceTickets, "and we are left with", remainingTickets)
+	fmt.Println("we have a total of", conferenceTickets)
 
 	// Go datatypes
 	// when declaring or creating a variable, it must/ should be defined with a dtype
@@ -29,7 +29,10 @@ func main() {
 	var bookings[]string;
 
 
-// ask users for their name 
+	// creating a for loop for an automated system
+for {
+	
+	// ask users for their name 
 
 	fmt.Println("Welcome! could you please tell me your name");
 
@@ -44,11 +47,16 @@ func main() {
 
 	fmt.Printf("thank You %v  you booked %v tickets for the %v,\n", userName, userTickets, conferenceName )
 
+	remainingTickets = remainingTickets - userTickets
+	fmt.Printf("we have %v ticket remaining\n", remainingTickets)
+	
 	bookings = append(bookings, userName)
 	fmt.Printf("the whole slice: %v\n", bookings)
 	fmt.Printf("the first value: %v\n", bookings[0])
 	fmt.Printf("the slice type: %T\n", bookings)
 	fmt.Printf("the  slice length: %v\n", len(bookings))
 	
+
+}
 
 }
