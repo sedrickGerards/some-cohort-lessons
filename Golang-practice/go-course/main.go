@@ -20,11 +20,20 @@ func main() {
 	var userName string
 	var email string
 	var userTickets int
+
+	// creating booking array to store user data
+	// var bookings [50]string
+
+	//utilising slice instead of arrrays
+	// Slices are better to use since it use when we have an infinite infinite/unknoen input from the user and so we neeed not always state the index position before asigning a value to it but we just APPEND automatically to the next position
+	var bookings[]string;
+
+
 // ask users for their name 
 
 	fmt.Println("Welcome! could you please tell me your name");
 
-	// we use pointers in the scan section to point to the register/ bin address to where the value is being stored(basiccaly  it assigns the value of the address it is being stored in to)
+	// we use pointers in the scan section to point to the register/ bin address to where the value is being stored(basicaly  it assigns the value of the address it is being stored in to)
 	fmt.Scanln(&userName)
 
 	fmt.Printf("Please enter your email\n")
@@ -34,5 +43,12 @@ func main() {
 	fmt.Scanln(&userTickets)
 
 	fmt.Printf("thank You %v  you booked %v tickets for the %v,\n", userName, userTickets, conferenceName )
+
+	bookings = append(bookings, userName)
+	fmt.Printf("the whole slice: %v\n", bookings)
+	fmt.Printf("the first value: %v\n", bookings[0])
+	fmt.Printf("the slice type: %T\n", bookings)
+	fmt.Printf("the  slice length: %v\n", len(bookings))
+	
 
 }
