@@ -1,5 +1,6 @@
 import Todo from "./components/Todo";
 
+
 function App() {
   return (
     <div className="main-container">
@@ -7,13 +8,13 @@ function App() {
       <Todo text='always pray'/>
       <Todo text='eat '/>
       <Todo text='plan to fight florent'/>
+
+
+
     </div>
   );
 
-  
- 
 
-  
 }
 
 export default App;
