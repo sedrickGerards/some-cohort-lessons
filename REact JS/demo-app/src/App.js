@@ -1,20 +1,11 @@
-import Todo from "./components/Todo";
-
+import ChatMessage from "./Components/ChatMessage";
 
 function App() {
   return (
-    <div className="main-container">
-      <h1> My Todos</h1>
-      <Todo text='always pray'/>
-      <Todo text='eat '/>
-      <Todo text='plan to fight florent'/>
-
-
-
-    </div>
+    <>
+      <p> Hey there welcome to my AI Chatbot</p>
+    </>
   );
-
-
 }
 
 export default App;

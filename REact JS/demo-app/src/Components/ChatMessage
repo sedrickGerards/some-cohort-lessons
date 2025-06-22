@@ -1,0 +1,12 @@
+function ChatMessage() {
+  return (
+  <>
+  <p> Hey there welcome to my AI Chatbot</p>
+
+
+  </>
+)
+
+}
+
+export default ChatMessage;
