@@ -56,6 +56,7 @@ function Message() {
       },
     ]);
 
+
     // Clear the input field after sending
     setInputText("");
 
@@ -63,14 +64,27 @@ function Message() {
     console.log("message sent");
   };
 
+      // mapping through message to get the inputed message
+
+      const newMessage = messages.map((message) => {
+        return (
+          <div key={message.id}>
+
+         <p>{ message.message}</p> 
+          </div>
+        )
+      })
+
   return (
     <>
      
       <InputMessage inputText={inputText} handleText={handleText} />
-      <SendMessage handleSend={handleSend} />
+
+      <SendMessage  inputText= {inputText} handleSend={handleSend} />
 
      
       <div>{inputText}</div>
+      <div >{newMessage}</div>
     </>
   );
 }
