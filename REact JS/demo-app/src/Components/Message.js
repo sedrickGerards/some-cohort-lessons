@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './message.css'
 
 // Component for rendering the input field
 function InputMessage({ inputText, handleText }) {
@@ -30,7 +31,7 @@ function Message() {
   // State for tracking all messages in the conversation
   const [messages, setMessages] = useState([
     {
-      message: "sed",
+      message: "hey there Gentle-Sed Welcome!",
       sender: "user",
       id: crypto.randomUUID(),
     },
@@ -68,24 +69,33 @@ function Message() {
 
       const newMessage = messages.map((message) => {
         return (
-          <div key={message.id}>
-
-         <p>{ message.message}</p> 
+          <div className="message-and-logo-container">
+            {message.sender === "user" ? (
+              <div className="user-chat">
+                <p>{message.message}</p> <img src="/img/user.png" alt="logo" />
+              </div>
+            ) : (
+              <div className="bot-chat">
+                <img src="/img/robot.png" alt="logo" /> <p>{message.message}</p>
+              </div>
+            )}
           </div>
-        )
+
+        );
       })
 
   return (
-    <>
-     
-      <InputMessage inputText={inputText} handleText={handleText} />
+    <div className="main-chat-container">
+      <div className="user-input">
+        <InputMessage inputText={inputText} handleText={handleText} />
 
-      <SendMessage  inputText= {inputText} handleSend={handleSend} />
+        <SendMessage handleSend={handleSend} />
+      </div>
 
-     
-      <div>{inputText}</div>
-      <div >{newMessage}</div>
-    </>
+      <div className="new-message-container">
+        {newMessage}
+      </div>
+    </div>
   );
 }
 
