@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./message.css";
-import {getOfflineBotReply} from "./Response.js";
+import { getOfflineBotReply } from "./Response.js";
 
 // Component for rendering the input field
 function InputMessage({ inputText, handleText, handleSend }) {
@@ -11,12 +11,11 @@ function InputMessage({ inputText, handleText, handleSend }) {
         placeholder="Enter your text..."
         onChange={handleText}
         value={inputText}
-        onKeyDown={(e)=> {
+        onKeyDown={(e) => {
           if (e.key === "Enter") {
             handleSend();
           }
-        }
-        }
+        }}
       />
     </div>
   );
@@ -24,11 +23,9 @@ function InputMessage({ inputText, handleText, handleSend }) {
 
 // Component for rendering the "Send" button
 function SendMessage({ handleSend }) {
- 
   return (
     <div className="send-button">
-      <button type="button" 
-      onClick={handleSend}>
+      <button type="button" onClick={handleSend}>
         Send
       </button>
     </div>
@@ -58,12 +55,9 @@ function Message() {
   const handleText = (event) => {
     setInputText(event.target.value);
   };
-  
-  
-  
+
   // Called when the "Send" button is clicked
   const handleSend = () => {
-
     // calling the bot response function
     const botResponse = getOfflineBotReply(inputText);
     // Add the current inputText as a new message
@@ -93,11 +87,11 @@ function Message() {
     return (
       <div className="message-and-logo-container" key={message.id}>
         {message.sender === "user" ? (
-          <div className="user-chat" >
+          <div className="user-chat">
             <p>{message.message}</p> <img src="/img/user.png" alt="logo" />
           </div>
         ) : (
-          <div className="bot-chat" >
+          <div className="bot-chat">
             <img src="/img/robot.png" alt="logo" /> <p>{message.message}</p>
           </div>
         )}
@@ -110,7 +104,11 @@ function Message() {
       <div className="new-message-container">{newMessage}</div>
 
       <div className="user-input">
-        <InputMessage inputText={inputText} handleText={handleText} handleSend={handleSend}/>
+        <InputMessage
+          inputText={inputText}
+          handleText={handleText}
+          handleSend={handleSend}
+        />
         <SendMessage handleSend={handleSend} />
       </div>
     </div>
