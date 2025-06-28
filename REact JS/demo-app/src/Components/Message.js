@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "./message.css";
+import {getOfflineBotReply} from "./Response.js";
 
 // Component for rendering the input field
-function InputMessage({ inputText, handleText }) {
+function InputMessage({ inputText, handleText, handleSend }) {
   return (
     <div className="input-text">
       <input
@@ -10,6 +11,12 @@ function InputMessage({ inputText, handleText }) {
         placeholder="Enter your text..."
         onChange={handleText}
         value={inputText}
+        onKeyDown={(e)=> {
+          if (e.key === "Enter") {
+            handleSend();
+          }
+        }
+        }
       />
     </div>
   );
@@ -17,22 +24,29 @@ function InputMessage({ inputText, handleText }) {
 
 // Component for rendering the "Send" button
 function SendMessage({ handleSend }) {
+ 
   return (
     <div className="send-button">
-      <button type="button" onClick={handleSend}>
+      <button type="button" 
+      onClick={handleSend}>
         Send
       </button>
     </div>
   );
 }
 
+// function EnterKeySendMessage (e){
+//   if(e.key === "Enter"){
+//     handleSend()
+//   }
+// }
 // Main chat component managing messages and input state
 function Message() {
   // State for tracking all messages in the conversation
   const [messages, setMessages] = useState([
     {
       message: "hey there Gentle-Sed Welcome!",
-      sender: "user",
+      sender: "bot",
       id: crypto.randomUUID(),
     },
   ]);
@@ -44,15 +58,25 @@ function Message() {
   const handleText = (event) => {
     setInputText(event.target.value);
   };
-
+  
+  
+  
   // Called when the "Send" button is clicked
   const handleSend = () => {
+
+    // calling the bot response function
+    const botResponse = getOfflineBotReply(inputText);
     // Add the current inputText as a new message
     setMessages([
       ...messages,
       {
         message: inputText,
         sender: "user",
+        id: crypto.randomUUID(),
+      },
+      {
+        message: botResponse,
+        sender: "bot",
         id: crypto.randomUUID(),
       },
     ]);
@@ -67,13 +91,13 @@ function Message() {
 
   const newMessage = messages.map((message) => {
     return (
-      <div className="message-and-logo-container">
+      <div className="message-and-logo-container" key={message.id}>
         {message.sender === "user" ? (
-          <div className="user-chat">
+          <div className="user-chat" >
             <p>{message.message}</p> <img src="/img/user.png" alt="logo" />
           </div>
         ) : (
-          <div className="bot-chat">
+          <div className="bot-chat" >
             <img src="/img/robot.png" alt="logo" /> <p>{message.message}</p>
           </div>
         )}
@@ -86,7 +110,7 @@ function Message() {
       <div className="new-message-container">{newMessage}</div>
 
       <div className="user-input">
-        <InputMessage inputText={inputText} handleText={handleText} />
+        <InputMessage inputText={inputText} handleText={handleText} handleSend={handleSend}/>
         <SendMessage handleSend={handleSend} />
       </div>
     </div>

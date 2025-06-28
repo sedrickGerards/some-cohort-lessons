@@ -17,7 +17,7 @@ const response = {
     "Hmm, I'm not sure how to respond to that yet this young man has not taught me well to reply that ... try saying hello or ask for help, time, weather, jokes, etc.",
 };
 
-export function getOfflineBotReply(message = "") {
+export function getOfflineBotReply(message = "", ) {
   const msg = message.toLowerCase();
 
   // Keyword categories
