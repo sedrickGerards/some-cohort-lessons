@@ -1,36 +1,8 @@
 import { useState } from "react";
 import "./message.css";
 import { getOfflineBotReply } from "./Response.js";
-
-// Component for rendering the input field
-function InputMessage({ inputText, handleText, handleSend }) {
-  return (
-    <div className="input-text">
-      <input
-        type="text"
-        placeholder="Enter your text..."
-        onChange={handleText}
-        value={inputText}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            handleSend();
-          }
-        }}
-      />
-    </div>
-  );
-}
-
-// Component for rendering the "Send" button
-function SendMessage({ handleSend }) {
-  return (
-    <div className="send-button">
-      <button type="button" onClick={handleSend}>
-        Send
-      </button>
-    </div>
-  );
-}
+import InputMessage from "./MessageInput.jsx";
+import SendMessage from "./button.jsx";
 
 // function EnterKeySendMessage (e){
 //   if(e.key === "Enter"){
